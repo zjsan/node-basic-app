@@ -14,9 +14,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 //database connection
-let mysql = require("mysql");
-
-let con = mysql.createConnection({
+const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
