@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Node App</title>
+  </head>
+  <body>
+    <h1 id="msg">Connecting...</h1>
+
+    <script>
+      fetch("http://localhost:3000/api/hello")
+        .then((res) => res.json())
+        .then((data) => {
+          document.getElementById("msg").innerText = data.message;
+        })
+        .catch(() => {
+          document.getElementById("msg").innerText =
+            "Error connecting to backend";
+        });
+    </script>
+  </body>
+</html>
