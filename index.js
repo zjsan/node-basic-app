@@ -32,7 +32,7 @@ con.connect(function (err) {
 // Routes
 // API to check connection witht backend
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "Hello World! Backend connected ✅" });
+  res.json({ message: "Backend connected" });
 });
 
 // API to register a user
