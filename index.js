@@ -28,3 +28,30 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
+// Routes
+// API to check connection witht backend
+app.get("/api/hello", (req, res) => {
+  res.json({ message: "Hello World! Backend connected ✅" });
+});
+
+// API to register a user
+app.post("/api/register", (req, res) => {
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).json({ error: "Username and password required" });
+  }
+
+  con.query(
+    "INSERT INTO users (username, password) VALUES (?, ?)",
+    [username, password],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Database error" });
+      }
+      res.json({ message: "User registered successfully!" });
+    }
+  );
+});
