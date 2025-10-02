@@ -24,6 +24,7 @@
       <button type="submit">Register</button>
     </form>
 
+    <p id="registerMsg"></p>
     <script>
       //backend call to index.js
       fetch("http://localhost:3000/api/hello")
@@ -34,6 +35,31 @@
         .catch(() => {
           document.getElementById("msg").innerText =
             "Error connecting to backend";
+        });
+
+      //registraation form submission
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // prevent page refresh
+
+          const username = document.getElementById("username").value;
+          const password = document.getElementById("password").value;
+
+          fetch("http://localhost:3000/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              document.getElementById("registerMsg").innerText =
+                data.message || data.error;
+            })
+            .catch(() => {
+              document.getElementById("registerMsg").innerText =
+                "Error registering user";
+            });
         });
     </script>
   </body>
