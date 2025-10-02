@@ -12,3 +12,19 @@ const port = 3000; //application port
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+//database connection
+let mysql = require("mysql");
+
+let con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  port: 3306,
+  database: "testdb",
+});
+
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
