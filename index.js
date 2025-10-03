@@ -30,7 +30,7 @@ con.connect(function (err) {
 // Routes
 // API to check connection witht backend
 app.get("/api/hello", (req, res) => {
-  res.json({ message: "Backend connected" });
+  res.json({ message: "Hello world!" });
 });
 
 // API to register a user
@@ -52,4 +52,8 @@ app.post("/api/register", (req, res) => {
       res.json({ message: "User registered successfully!" });
     }
   );
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
