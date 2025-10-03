@@ -4,6 +4,7 @@
     <title>Simple Node App</title>
   </head>
   <body>
+    <!-- Hello World! if connected to the backend -->
     <h1 id="msg"></h1>
 
     <!-- Registration Form -->
@@ -27,6 +28,7 @@
     <p id="registerMsg"></p>
     <script>
       //backend call to index.js
+      //will dispaly hello world if succesfful backend connection
       fetch("http://localhost:3000/api/hello")
         .then((res) => res.json())
         .then((data) => {
@@ -37,7 +39,7 @@
             "Error connecting to backend";
         });
 
-      //registraation form submission
+      //registraation form submission request to backend
       document
         .getElementById("registerForm")
         .addEventListener("submit", function (e) {
